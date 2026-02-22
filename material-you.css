@@ -306,3 +306,33 @@ body {
     0px 4px 4px rgba(0,0,0,0.3),
     0px 8px 12px 6px rgba(0,0,0,0.15);
 }
+
+/* Ripple effect */
+.md-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.md-ripple::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: 0;
+  border-radius: inherit;
+  transition: opacity var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+  pointer-events: none;
+}
+
+.md-ripple:hover::after {
+  opacity: var(--md-sys-state-hover-opacity);
+}
+
+.md-ripple:focus-visible::after {
+  opacity: var(--md-sys-state-focus-opacity);
+}
+
+.md-ripple:active::after {
+  opacity: var(--md-sys-state-pressed-opacity);
+  transition-duration: var(--md-sys-motion-duration-short1);
+}
