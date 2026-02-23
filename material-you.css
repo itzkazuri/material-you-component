@@ -1293,3 +1293,74 @@ body {
   50% { stroke-dasharray: 89, 200; stroke-dashoffset: -35px; }
   100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124px; }
 }
+
+/* Switch */
+.md-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+.md-switch input[type="checkbox"] {
+  display: none;
+}
+.md-switch-track {
+  position: relative;
+  width: 52px;
+  height: 32px;
+  border-radius: var(--md-sys-shape-corner-full);
+  border: 2px solid var(--md-sys-color-outline);
+  background-color: var(--md-sys-color-surface-container-highest);
+  transition:
+    background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    border-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+  overflow: visible;
+  flex-shrink: 0;
+}
+.md-switch-thumb {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--md-sys-color-outline);
+  transition:
+    width var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    height var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    left var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.md-switch:hover .md-switch-thumb {
+  width: 28px;
+  height: 28px;
+  left: -2px;
+}
+.md-switch input:checked ~ .md-switch-track {
+  background-color: var(--md-sys-color-primary);
+  border-color: var(--md-sys-color-primary);
+}
+.md-switch input:checked ~ .md-switch-track .md-switch-thumb {
+  left: calc(100% - 20px);
+  background-color: var(--md-sys-color-on-primary);
+  width: 24px;
+  height: 24px;
+}
+.md-switch:hover input:checked ~ .md-switch-track .md-switch-thumb {
+  width: 28px;
+  height: 28px;
+  left: calc(100% - 26px);
+}
+.md-switch input:disabled ~ .md-switch-track {
+  opacity: var(--md-sys-state-disabled-opacity);
+  cursor: not-allowed;
+}
+.md-switch-label {
+  font-size: var(--md-sys-typescale-body-large-size);
+  color: var(--md-sys-color-on-surface);
+}
