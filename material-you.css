@@ -743,3 +743,60 @@ body {
 .md-text-field.md-error-state .md-text-field-filled::after { background-color: var(--md-sys-color-error); height: 2px; }
 .md-text-field.md-error-state.md-text-field-outlined { border-color: var(--md-sys-color-error); }
 .md-text-field.md-error-state .md-text-field-support { color: var(--md-sys-color-error); }
+
+/* Cards */
+.md-card {
+  border-radius: var(--md-sys-shape-corner-medium);
+  overflow: hidden;
+  position: relative;
+}
+
+.md-card-elevated {
+  background-color: var(--md-sys-color-surface-container-low);
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.3), 0px 1px 3px 1px rgba(0,0,0,0.15);
+  transition: box-shadow var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+.md-card-elevated:hover {
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.3), 0px 2px 6px 2px rgba(0,0,0,0.15);
+}
+
+.md-card-filled {
+  background-color: var(--md-sys-color-surface-container-highest);
+}
+
+.md-card-outlined {
+  background-color: var(--md-sys-color-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+/* Clickable card state layer */
+.md-card-interactive {
+  cursor: pointer;
+}
+.md-card-interactive::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--md-sys-color-on-surface);
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+  pointer-events: none;
+}
+.md-card-interactive:hover::after { opacity: var(--md-sys-state-hover-opacity); }
+.md-card-interactive:focus-visible::after { opacity: var(--md-sys-state-focus-opacity); }
+.md-card-interactive:active::after { opacity: var(--md-sys-state-pressed-opacity); transition-duration: var(--md-sys-motion-duration-short1); }
+
+.md-card-media {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+.md-card-content {
+  padding: 16px;
+}
+.md-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 8px 8px;
+}
