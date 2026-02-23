@@ -1228,3 +1228,68 @@ body {
   from { transform: translateY(100%); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+/* Progress indicators */
+/* Linear */
+.md-progress-linear {
+  width: 100%;
+  height: 4px;
+  background-color: var(--md-sys-color-surface-container-highest);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.md-progress-linear-track {
+  height: 100%;
+  background-color: var(--md-sys-color-primary);
+  border-radius: 2px;
+  transition: width var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+}
+.md-progress-linear-indeterminate .md-progress-linear-track {
+  width: 50% !important;
+  animation: md-linear-indeterminate 1.5s infinite var(--md-sys-motion-easing-standard);
+}
+@keyframes md-linear-indeterminate {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+
+/* Circular */
+.md-progress-circular {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.md-progress-circular svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.md-progress-circular-track {
+  fill: none;
+  stroke: var(--md-sys-color-surface-container-highest);
+  stroke-width: 4;
+}
+.md-progress-circular-indicator {
+  fill: none;
+  stroke: var(--md-sys-color-primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 126.92;
+  stroke-dashoffset: 126.92;
+  transition: stroke-dashoffset var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+}
+.md-progress-circular-indeterminate .md-progress-circular-indicator {
+  animation: md-circular-rotate 1.4s linear infinite, md-circular-dash 1.4s ease-in-out infinite;
+}
+@keyframes md-circular-rotate {
+  100% { transform: rotate(270deg); }
+}
+@keyframes md-circular-dash {
+  0%  { stroke-dasharray: 1, 200; stroke-dashoffset: 0; }
+  50% { stroke-dasharray: 89, 200; stroke-dashoffset: -35px; }
+  100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124px; }
+}
