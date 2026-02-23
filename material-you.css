@@ -679,3 +679,67 @@ body {
 .md-text-field textarea::placeholder {
   color: transparent;
 }
+
+/* Filled indicator */
+.md-text-field-filled::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--md-sys-color-on-surface-variant);
+  transition: height var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+              background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+.md-text-field-filled:focus-within::after {
+  height: 2px;
+  background-color: var(--md-sys-color-primary);
+}
+
+/* Outlined Text Field */
+.md-text-field-outlined {
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  background: transparent;
+  transition: border-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+.md-text-field-outlined:focus-within {
+  border: 2px solid var(--md-sys-color-primary);
+}
+.md-text-field-outlined input,
+.md-text-field-outlined textarea {
+  padding: 16px 16px;
+}
+.md-text-field-outlined label {
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--md-sys-color-surface);
+  padding: 0 4px;
+}
+.md-text-field-outlined textarea ~ label {
+  top: 16px;
+  transform: none;
+}
+.md-text-field-outlined input:focus ~ label,
+.md-text-field-outlined input:not(:placeholder-shown) ~ label,
+.md-text-field-outlined textarea:focus ~ label,
+.md-text-field-outlined textarea:not(:placeholder-shown) ~ label {
+  top: -1px;
+  transform: translateY(-50%);
+  font-size: var(--md-sys-typescale-body-small-size);
+  color: var(--md-sys-color-primary);
+}
+
+/* Support text */
+.md-text-field-support {
+  padding: 4px 16px 0;
+  font-size: var(--md-sys-typescale-body-small-size);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Error State */
+.md-text-field.md-error-state label { color: var(--md-sys-color-error) !important; }
+.md-text-field.md-error-state .md-text-field-filled::after { background-color: var(--md-sys-color-error); height: 2px; }
+.md-text-field.md-error-state.md-text-field-outlined { border-color: var(--md-sys-color-error); }
+.md-text-field.md-error-state .md-text-field-support { color: var(--md-sys-color-error); }
